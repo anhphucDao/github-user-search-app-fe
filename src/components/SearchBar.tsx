@@ -3,7 +3,7 @@ import { ReactComponent as SearchIcon } from '../assets/icon-search.svg';
 
 export default function SearchBar() {
     return (
-        <div className="flex flex-row w-[20.44rem] h-[3.75rem] bg-github-white mt-[2.25rem] rounded-[0.94rem] items-center sm:w-[35.81rem] md:w-[45.63rem]">
+        <div className="flex flex-row w-[20.44rem] h-[3.75rem] bg-github-white mt-[2.25rem] rounded-[0.94rem] items-center sm:w-[35.81rem] md:w-[45.63rem] drop-shadow-lg">
             <SearchIcon className="ml-[1rem] sm:ml-[2rem]" />
             <input
                 placeholder="Search GitHub username…"
