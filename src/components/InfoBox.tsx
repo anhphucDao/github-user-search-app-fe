@@ -6,7 +6,11 @@ import { ReactComponent as CompanyIcon } from '../assets/icon-company.svg';
 
 import { ReactComponent as DefaultAvatar } from '../assets/Oval.svg';
 
+// import { useUserDataContext } from '../context/DataContext';
+
 export default function InfoBox() {
+    // const { userName, setUserName, userData, setUserData } = useUserDataContext();
+
     return (
         <div className="flex flex-col w-[20.44rem] h-[32.31rem] sm:w-[35.81rem] sm:h-[30.06rem] md:w-[45.63rem] md:h-[27.75rem] rounded-[0.94rem] drop-shadow-lg bg-github-white mt-[1rem] sm:mt-[1.5rem] mb-[5rem] sm:mb-[14.75rem] md:mb-[9rem]">
             <div className="flex flex-row mt-[2rem] order-1 items-center md:mt-[3rem] ">
