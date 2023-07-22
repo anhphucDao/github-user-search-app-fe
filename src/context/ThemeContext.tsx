@@ -67,20 +67,23 @@ export default function ThemeProvider({ children }: DataProviderProps) {
             bgSecondary: 'bg-github-yankeesBlue',
             text: 'text-github-white',
             svgFill: 'fill-[#FFFFFF]',
-            themeIconFill: 'fill-[#FFFFFF]',
+            themeIconFill: 'fill-[#90A4D4]',
         },
     };
 
     const [theme, setTheme] = useState(() => {
         const storedTheme = localStorage.getItem('theme');
-        return storedTheme || 'light';
+        return storedTheme ? JSON.parse(storedTheme) : 'light';
     });
 
+    // setTheme((prevState) => (prevState === 'light' ? 'dark' : 'light'));
+
+    // const [theme, setTheme] = useState('light');
     useEffect(() => {
-        localStorage.setItem('theme', theme);
+        localStorage.setItem('theme', JSON.stringify(theme));
     }, [theme]);
 
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    // setTheme(theme === 'light' ? 'dark' : 'light');
 
     return <ThemeProvider value={{ theme, setTheme, themeConfig }}>{children}</ThemeProvider>;
 }
