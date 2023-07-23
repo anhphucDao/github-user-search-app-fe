@@ -18,6 +18,7 @@ export const UserDataContext = createContext<UserData>({
 
 export interface DataProviderProps {
     children: React.ReactNode;
+    value?: UserData;
 }
 
 export const useUserDataContext = () => useContext(UserDataContext);

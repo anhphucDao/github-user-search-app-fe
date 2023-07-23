@@ -1,34 +1,34 @@
-import React, { useState, createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 
 const ThemeContext = createContext<{
     theme: string;
-    setTheme: () => void;
+    setTheme: Dispatch<SetStateAction<string>>;
     themeConfig: ThemeConfigMap;
 }>({
     theme: 'light',
     setTheme: () => {},
     themeConfig: {
         light: {
-            bgPrimary: 'bg-white',
-            bgSecondary: 'bg-gray-200',
-            text: 'text-gray-800',
-            svgFill: 'fill-current',
-            themeIconFill: 'fill-current',
+            bgPrimary: 'bg-github-ghostWhite',
+            bgSecondary: 'bg-github-white',
+            text: 'text-github-slateGray',
+            svgFill: 'fill-[#4B6A9B]',
+            themeIconFill: 'fill-[#222731]',
         },
         dark: {
-            bgPrimary: 'bg-black',
-            bgSecondary: 'bg-gray-800',
+            bgPrimary: 'bg-github-darkGunMetal',
+            bgSecondary: 'bg-github-yankeesBlue',
             text: 'text-white',
-            svgFill: 'fill-current',
-            themeIconFill: 'fill-current',
+            svgFill: 'fill-[#FFFFFF]',
+            themeIconFill: 'fill-[#90A4D4]',
         },
     },
 });
 
 export interface DataProviderProps {
     children: React.ReactNode;
-    value: ThemeContextValue;
+    value?: ThemeContextValue;
 }
 
 interface ThemeContextValue {
@@ -37,7 +37,7 @@ interface ThemeContextValue {
     themeConfig: ThemeConfigMap;
 }
 
-interface ThemeConfig {
+export interface ThemeConfig {
     bgPrimary: string;
     bgSecondary: string;
     text: string;
@@ -45,7 +45,7 @@ interface ThemeConfig {
     themeIconFill: string;
 }
 
-interface ThemeConfigMap {
+export interface ThemeConfigMap {
     light: ThemeConfig;
     dark: ThemeConfig;
 }
@@ -76,14 +76,13 @@ export default function ThemeProvider({ children }: DataProviderProps) {
         return storedTheme ? JSON.parse(storedTheme) : 'light';
     });
 
-    // setTheme((prevState) => (prevState === 'light' ? 'dark' : 'light'));
-
-    // const [theme, setTheme] = useState('light');
     useEffect(() => {
         localStorage.setItem('theme', JSON.stringify(theme));
     }, [theme]);
 
-    // setTheme(theme === 'light' ? 'dark' : 'light');
-
-    return <ThemeProvider value={{ theme, setTheme, themeConfig }}>{children}</ThemeProvider>;
+    return (
+        <ThemeContext.Provider value={{ theme, setTheme, themeConfig }}>
+            {children}
+        </ThemeContext.Provider>
+    );
 }

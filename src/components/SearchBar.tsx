@@ -52,7 +52,7 @@ export default function SearchBar() {
 
         setSpanWidth(spanClientWidth || 0);
 
-        setInputWidth((innerDivWidth - spanWidth - inputPaddingLeft) / rootFontSize);
+        setInputWidth((innerDivWidth - spanWidth - inputPaddingLeft - 24) / rootFontSize);
 
         console.log('inputWidth:', inputWidth);
         console.log('inputPaddingLeft:', inputPaddingLeft);

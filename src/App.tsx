@@ -1,32 +1,43 @@
 import React from 'react';
 import './index.css';
-import Header from '../src/components/Header';
-import SearchBar from '../src/components/SearchBar';
-import InfoBox from '../src/components/InfoBox';
+// import Header from '../src/components/Header';
+// import SearchBar from '../src/components/SearchBar';
+// import InfoBox from '../src/components/InfoBox';
 
 import DataProvider from '../src/context/DataContext';
+
+// import ContextProvider from './context/ContextProvider';
 import ThemeProvider from '../src/context/ThemeContext';
 
 import { useThemeContext } from '../src/context/ThemeContext';
 
+import { useEffect } from 'react';
+
+import Main from './components/Main';
+
 function App() {
-    const { theme, setTheme, themeConfig } = useThemeContext();
+    const { theme, themeConfig, setTheme } = useThemeContext();
+
+    console.log('theme:', theme);
+    console.log(
+        ' themeConfig[theme as keyof typeof themeConfig].bgPrimary:',
+        themeConfig[theme as keyof typeof themeConfig].bgPrimary,
+    );
+
+    useEffect(() => {
+        console.log('theme:', theme);
+        console.log(
+            ' themeConfig[theme as keyof typeof themeConfig].bgPrimary:',
+            themeConfig[theme as keyof typeof themeConfig].bgPrimary,
+        );
+    }, [theme, themeConfig]);
+
     return (
-        <DataProvider>
-            <ThemeProvider value={{ theme, setTheme, themeConfig }}>
-                <div
-                    className={`min-h-screen min-w-full ${
-                        themeConfig[theme as keyof typeof themeConfig].bgPrimary
-                    } flex-1 flex`}
-                >
-                    <div className="flex flex-col mx-auto my-auto mt-[1.94rem] sm:mt-[8.75rem] md:mt-[9rem] items-center font-space h-[41.6875rem] max-h-[41.6875rem] mb-[5rem]">
-                        <Header />
-                        <SearchBar />
-                        <InfoBox />
-                    </div>
-                </div>
-            </ThemeProvider>
-        </DataProvider>
+        <ThemeProvider value={{ theme, themeConfig, setTheme }}>
+            <DataProvider>
+                <Main />
+            </DataProvider>
+        </ThemeProvider>
     );
 }
 
