@@ -1,18 +1,9 @@
 import React from 'react';
 import './index.css';
-// import Header from '../src/components/Header';
-// import SearchBar from '../src/components/SearchBar';
-// import InfoBox from '../src/components/InfoBox';
-
 import DataProvider from '../src/context/DataContext';
-
-// import ContextProvider from './context/ContextProvider';
 import ThemeProvider from '../src/context/ThemeContext';
-
 import { useThemeContext } from '../src/context/ThemeContext';
-
 import { useEffect } from 'react';
-
 import Main from './components/Main';
 
 function App() {
