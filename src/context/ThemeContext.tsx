@@ -12,15 +12,15 @@ const ThemeContext = createContext<{
         light: {
             bgPrimary: 'bg-github-ghostWhite',
             bgSecondary: 'bg-github-white',
-            text: 'text-github-slateGray',
-            svgFill: 'fill-[#4B6A9B]',
+            text: 'text-github-queenBlue',
+            svgFill: 'fill-queenBlue',
             themeIconFill: 'fill-[#222731]',
         },
         dark: {
             bgPrimary: 'bg-github-darkGunMetal',
             bgSecondary: 'bg-github-yankeesBlue',
             text: 'text-white',
-            svgFill: 'fill-[#FFFFFF]',
+            svgFill: 'fill-github-white',
             themeIconFill: 'fill-[#90A4D4]',
         },
     },
